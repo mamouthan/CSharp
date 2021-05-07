@@ -1,0 +1,76 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.0",
+    "signature": "ac3558d102b1755584dc7411125187d2a79a11de"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.0": {
+      "IntroUI/1.0.0": {
+        "dependencies": {
+          "Dapper": "2.0.90",
+          "IntroLibrary": "1.0.0"
+        },
+        "runtime": {
+          "IntroUI.dll": {}
+        }
+      },
+      "Dapper/2.0.90": {
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.7.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Dapper.dll": {}
+        }
+      },
+      "Serilog/2.10.0": {
+        "runtime": {
+          "lib/netstandard2.0/Serilog.dll": {}
+        }
+      },
+      "System.Reflection.Emit.Lightweight/4.7.0": {},
+      "IntroLibrary/1.0.0": {
+        "dependencies": {
+          "Dapper": "2.0.90",
+          "Serilog": "2.10.0"
+        },
+        "runtime": {
+          "IntroLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "IntroUI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Dapper/2.0.90": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TiW5wu/GrKdIc3vjP/1s4YqMxiZrgvNVf28/SWVuxtXUhcO6+AC1uZw0h3xxb0ROwWTUL7AMNka/k+jM0mQtKg==",
+      "path": "dapper/2.0.90",
+      "hashPath": "dapper.2.0.90.nupkg.sha512"
+    },
+    "Serilog/2.10.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-nBmWTREmwumfVG8dqBdkZE/jmxU+PY1yVHMiGm4IVfNWd20vQKil0E7OTkIAddW5h2UBCKT8mzK09WrT0HkiYA==",
+      "path": "serilog/2.10.0",
+      "hashPath": "serilog.2.10.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit.Lightweight/4.7.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Blr1A9Vqk+ZUknlk6sFrhOcpuqx4bp7kqwZfhwkmmhz+9dgOl8cZ9CnSXbalbL9rfHmi5HDFydxQsfozl2PvjQ==",
+      "path": "system.reflection.emit.lightweight/4.7.0",
+      "hashPath": "system.reflection.emit.lightweight.4.7.0.nupkg.sha512"
+    },
+    "IntroLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

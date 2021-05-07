@@ -1,0 +1,9 @@
+D:\PracticeAutomation\CSharp\IntroLibrary\bin\Debug\netstandard2.0\IntroLibrary.deps.json
+D:\PracticeAutomation\CSharp\IntroLibrary\bin\Debug\netstandard2.0\IntroLibrary.dll
+D:\PracticeAutomation\CSharp\IntroLibrary\bin\Debug\netstandard2.0\IntroLibrary.pdb
+D:\PracticeAutomation\CSharp\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.csprojAssemblyReference.cache
+D:\PracticeAutomation\CSharp\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.csproj.CoreCompileInputs.cache
+D:\PracticeAutomation\CSharp\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.AssemblyInfoInputs.cache
+D:\PracticeAutomation\CSharp\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.AssemblyInfo.cs
+D:\PracticeAutomation\CSharp\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.dll
+D:\PracticeAutomation\CSharp\IntroLibrary\obj\Debug\netstandard2.0\IntroLibrary.pdb
