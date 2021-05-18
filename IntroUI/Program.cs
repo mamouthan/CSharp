@@ -6,29 +6,38 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {
-            int highest = 0;
-            int times;
-            Console.WriteLine("Enter how many number(s) user want to enter: ");
-            times = Convert.ToInt32(Console.ReadLine());
-            
-            int[] nums = new int[times];
-           
-            for (int i = 0; i < times; i++)
+            int[] numbers = new int[5]; 
+            for (int i = 0; i < 5; i++)
             {
-                Console.WriteLine("Please Enter a number: ");
-                nums[i] = Convert.ToInt32(Console.ReadLine());
+                bool validNumber = false; 
+                int compareNumber;
+                string keyboardInput = "";
+                while(validNumber == false)
+                { 
+                    Console.Write("Please Enter a number: ");
+                    keyboardInput = Convert.ToString(Console.ReadLine()); 
+                    if(int.TryParse(keyboardInput, out compareNumber))
+                    { 
+                        validNumber = true;
+                    } 
+                    else
+                    { 
+                        Console.WriteLine("Not a Number, please try again.");
+                    } 
+                }
+                numbers[i] = Convert.ToInt32(keyboardInput);
             }
 
-            foreach (var item in nums)
+            int highestNumber = numbers[0];
+            foreach (var item in numbers)
             {
-                int temp = item;
-                if (temp > highest)
+                if (item > highestNumber)
                 {
-                    highest = temp;
+                    highestNumber = item;
                 }                
             }
             Console.WriteLine("===========================");
-            Console.WriteLine("The highest number is " + highest);
+            Console.WriteLine("The highest number is " + highestNumber);
         }
     }
 }
