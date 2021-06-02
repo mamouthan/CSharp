@@ -1,41 +1,52 @@
-﻿using System;
+using System;
+using System.Collections.Generic;
 
 namespace IntroUI
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            int[] numbers = new int[5]; 
-            for (int i = 0; i < 5; i++)
+        {   
+            List<double> temporaryNumbers = new List<double>();
+            Console.WriteLine("Please enter list of numbers then enter \" = \" to check highest inputted number: ");
+            while (true)
             {
-                bool validNumber = false; 
-                int compareNumber;
-                string keyboardInput = "";
-                while(validNumber == false)
+                string keyboardInput = "";  
+                Boolean finishInput = false;              
+                while(true)
                 { 
-                    Console.Write("Please Enter a number: ");
-                    keyboardInput = Convert.ToString(Console.ReadLine()); 
-                    if(int.TryParse(keyboardInput, out compareNumber))
+                    double compareNumber;
+                    keyboardInput = Convert.ToString(Console.ReadLine());
+                    if(double.TryParse(keyboardInput, out compareNumber))
                     { 
-                        validNumber = true;
-                    } 
+                        break;
+                    }
+                    else if (keyboardInput == "=")
+                    {
+                        finishInput = true;
+                        break;
+                    }
                     else
                     { 
                         Console.WriteLine("Not a Number, please try again.");
                     } 
                 }
-                numbers[i] = Convert.ToInt32(keyboardInput);
+                if (finishInput)
+                {
+                    break;
+                }
+                temporaryNumbers.Add(Convert.ToDouble(keyboardInput));
             }
-
-            int highestNumber = numbers[0];
+            double[] numbers = temporaryNumbers.ToArray();
+            double highestNumber = numbers[0];
+            
             foreach (var item in numbers)
             {
                 if (item > highestNumber)
                 {
                     highestNumber = item;
                 }                
-            }
+            }            
             Console.WriteLine("===========================");
             Console.WriteLine("The highest number is " + highestNumber);
         }
