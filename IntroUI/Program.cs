@@ -7,48 +7,109 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {   
-            List<double> temporaryNumbers = new List<double>();
+            List<double> numbers = new List<double>();
             Console.WriteLine("Please enter list of numbers then enter \" = \" to check highest inputted number: ");
+            string keyboardInput = "";
             while (true)
             {
-                string keyboardInput = "";  
-                Boolean finishInput = false;              
-                while(true)
-                { 
-                    double compareNumber;
-                    keyboardInput = Convert.ToString(Console.ReadLine());
-                    if(double.TryParse(keyboardInput, out compareNumber))
-                    { 
-                        break;
-                    }
-                    else if (keyboardInput == "=")
-                    {
-                        finishInput = true;
-                        break;
-                    }
-                    else
-                    { 
-                        Console.WriteLine("Not a Number, please try again.");
-                    } 
-                }
-                if (finishInput)
+                keyboardInput = numberValidation(Convert.ToString(Console.ReadLine()));
+                if (keyboardInput == "=")
                 {
                     break;
                 }
-                temporaryNumbers.Add(Convert.ToDouble(keyboardInput));
-            }
-            double[] numbers = temporaryNumbers.ToArray();
-            double highestNumber = numbers[0];
-            
-            foreach (var item in numbers)
+                else if (keyboardInput == "Not Number")
+                {
+                    continue;
+                }
+                else
+                {
+                    numbers.Add(Convert.ToDouble(keyboardInput));
+                }
+            }            
+            Console.WriteLine("Please choose output for list of numbers:");
+            Console.WriteLine("1. Highest Number");
+            Console.WriteLine("2. Lowest Number");
+            Console.WriteLine("3. Average Number");
+            string choosedOutput = "";
+            double outputMethod = 0;  
+            while (true)
             {
+                string outputType = Convert.ToString(Console.ReadLine());
+                          
+                if (outputType == "1")                {
+                    choosedOutput = "highest number";
+                    outputMethod = highest(numbers);
+                    break;
+                }
+                else if (outputType == "2")
+                {
+                    choosedOutput = "lowest number";
+                    outputMethod = lowest(numbers);
+                    break;
+                }
+                else if (outputType == "3")
+                {
+                    choosedOutput = "average number";
+                    outputMethod = average(numbers);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine(" You choosed wrong method, please choose again 1, 2 or 3");
+                }                
+            }
+            Console.WriteLine("===========================");
+            Console.WriteLine("The " + choosedOutput + " is " + outputMethod);
+        }
+        static string numberValidation ( string keyInput)
+        {
+            if(double.TryParse(keyInput, out double compareNumber) || keyInput == "=")
+            {
+            }
+            else
+            {
+                Console.WriteLine("Not a Number, please try again.");
+                keyInput = "Not Number";
+            }
+            return keyInput;
+        }
+
+        static double highest (List<double> listInput)
+        {
+            double highestNumber = listInput[0];
+            foreach (var item in listInput)
+            {                
                 if (item > highestNumber)
                 {
                     highestNumber = item;
                 }                
-            }            
-            Console.WriteLine("===========================");
-            Console.WriteLine("The highest number is " + highestNumber);
+            }
+            return highestNumber;
+        }
+
+        static double lowest (List<double> listInput)
+        {
+            double lowestNumber = listInput[0];
+            foreach (var item in listInput)
+            {                
+                if (item < lowestNumber)
+                {
+                    lowestNumber = item;
+                }                
+            }
+            return lowestNumber;
+        }
+
+        static double average (List<double> listInput)
+        {
+            double totalNumber = 0;
+            int totalCount = listInput.Count;
+            foreach (var item in listInput)
+            {                
+                totalNumber += item;               
+            }
+            double averageNumber = totalNumber/totalCount;
+            return averageNumber;
         }
     }
 }
