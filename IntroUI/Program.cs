@@ -9,10 +9,9 @@ namespace IntroUI
         {   
             List<double> numbers = new List<double>();
             Console.WriteLine("Please enter list of numbers then enter \" = \" to check highest inputted number: ");
-            string keyboardInput = "";
             while (true)
-            {
-                keyboardInput = numberValidation(Convert.ToString(Console.ReadLine()));
+            {            
+                string keyboardInput = ValidateNumber();
                 if (keyboardInput == "=")
                 {
                     break;
@@ -34,23 +33,22 @@ namespace IntroUI
             double outputMethod = 0;  
             while (true)
             {
-                string outputType = Convert.ToString(Console.ReadLine());
-                          
+                string outputType = Convert.ToString(Console.ReadLine());    
                 if (outputType == "1")                {
                     choosedOutput = "highest number";
-                    outputMethod = highest(numbers);
+                    outputMethod = FindHighestNumber(numbers);
                     break;
                 }
                 else if (outputType == "2")
                 {
                     choosedOutput = "lowest number";
-                    outputMethod = lowest(numbers);
+                    outputMethod = FindLowestNumber(numbers);
                     break;
                 }
                 else if (outputType == "3")
                 {
                     choosedOutput = "average number";
-                    outputMethod = average(numbers);
+                    outputMethod = FindAverageNumber (numbers);
                     break;
                 }
                 else
@@ -61,12 +59,11 @@ namespace IntroUI
             Console.WriteLine("===========================");
             Console.WriteLine("The " + choosedOutput + " is " + outputMethod);
         }
-        static string numberValidation ( string keyInput)
+        static string ValidateNumber ()
         {
-            if(double.TryParse(keyInput, out double compareNumber) || keyInput == "=")
-            {
-            }
-            else
+            string keyInput = Convert.ToString(Console.ReadLine());
+            Boolean validNumber = double.TryParse(keyInput, out double compareNumber);
+            if(validNumber == false && keyInput != "=")
             {
                 Console.WriteLine("Not a Number, please try again.");
                 keyInput = "Not Number";
@@ -74,7 +71,7 @@ namespace IntroUI
             return keyInput;
         }
 
-        static double highest (List<double> listInput)
+        static double FindHighestNumber (List<double> listInput)
         {
             double highestNumber = listInput[0];
             foreach (var item in listInput)
@@ -87,7 +84,7 @@ namespace IntroUI
             return highestNumber;
         }
 
-        static double lowest (List<double> listInput)
+        static double FindLowestNumber (List<double> listInput)
         {
             double lowestNumber = listInput[0];
             foreach (var item in listInput)
@@ -100,7 +97,7 @@ namespace IntroUI
             return lowestNumber;
         }
 
-        static double average (List<double> listInput)
+        static double FindAverageNumber (List<double> listInput)
         {
             double totalNumber = 0;
             int totalCount = listInput.Count;
