@@ -63,7 +63,7 @@ namespace IntroUI
         {
             string keyInput = Convert.ToString(Console.ReadLine());
             Boolean validNumber = double.TryParse(keyInput, out double compareNumber);
-            if(validNumber == false && keyInput != "=")
+            if(!validNumber && keyInput != "=")
             {
                 Console.WriteLine("Not a Number, please try again.");
                 keyInput = "Not Number";
