@@ -7,25 +7,21 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {   
-            List<double> numbers = new List<double>();
-            Console.WriteLine("Please enter list of numbers then enter \" = \" to check highest inputted number: ");
+            List<string> listKeyboardInput = new List<string>();
+            Console.WriteLine("Please input anything from keyboard then enter \" = \" when done: ");
             while (true)
             {            
-                string keyboardInput = ValidateNumber();
+                string keyboardInput = GetKeyboardInput();
+                listKeyboardInput.Add(keyboardInput);
                 if (keyboardInput == "=")
                 {
                     break;
                 }
-                else if (keyboardInput == "Not Number")
-                {
-                    continue;
-                }
-                else
-                {
-                    numbers.Add(Convert.ToDouble(keyboardInput));
-                }
-            }            
-            Console.WriteLine("Please choose output for list of numbers:");
+            }
+
+            List<double> numbers = GetNumberOnly(listKeyboardInput);
+
+            Console.WriteLine("Please choose output for extracted numbers from keyboard input:");
             Console.WriteLine("1. Highest Number");
             Console.WriteLine("2. Lowest Number");
             Console.WriteLine("3. Average Number");
@@ -33,8 +29,9 @@ namespace IntroUI
             double outputMethod = 0;  
             while (true)
             {
-                string outputType = Convert.ToString(Console.ReadLine());    
-                if (outputType == "1")                {
+                string outputType = Convert.ToString(Console.ReadLine());                          
+                if (outputType == "1")
+                {
                     choosedOutput = "highest number";
                     outputMethod = FindHighestNumber(numbers);
                     break;
@@ -48,30 +45,36 @@ namespace IntroUI
                 else if (outputType == "3")
                 {
                     choosedOutput = "average number";
-                    outputMethod = FindAverageNumber (numbers);
+                    outputMethod = FindAverageNumber(numbers);
                     break;
                 }
                 else
                 {
                     Console.WriteLine(" You choosed wrong method, please choose again 1, 2 or 3");
-                }                
+                }            
             }
             Console.WriteLine("===========================");
             Console.WriteLine("The " + choosedOutput + " is " + outputMethod);
         }
-        static string ValidateNumber ()
+        static string GetKeyboardInput()
         {
             string keyInput = Convert.ToString(Console.ReadLine());
-            Boolean validNumber = double.TryParse(keyInput, out double compareNumber);
-            if(!validNumber && keyInput != "=")
-            {
-                Console.WriteLine("Not a Number, please try again.");
-                keyInput = "Not Number";
-            }
             return keyInput;
         }
-
-        static double FindHighestNumber (List<double> listInput)
+        static List<double> GetNumberOnly(List<string> listInput)
+        {
+            List<double> numbers= new List<double>();
+            foreach (var item in listInput)
+            {
+                Boolean validNumber = double.TryParse(item, out double compareNumber);
+                if(validNumber)
+                {
+                    numbers.Add(Convert.ToDouble(item));
+                }
+            }
+            return numbers;
+        }
+        static double FindHighestNumber(List<double> listInput)
         {
             double highestNumber = listInput[0];
             foreach (var item in listInput)
@@ -83,8 +86,7 @@ namespace IntroUI
             }
             return highestNumber;
         }
-
-        static double FindLowestNumber (List<double> listInput)
+        static double FindLowestNumber(List<double> listInput)
         {
             double lowestNumber = listInput[0];
             foreach (var item in listInput)
@@ -96,8 +98,7 @@ namespace IntroUI
             }
             return lowestNumber;
         }
-
-        static double FindAverageNumber (List<double> listInput)
+        static double FindAverageNumber(List<double> listInput)
         {
             double totalNumber = 0;
             int totalCount = listInput.Count;
