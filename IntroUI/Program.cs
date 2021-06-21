@@ -7,18 +7,8 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {   
-            List<string> listKeyboardInput = new List<string>();
             Console.WriteLine("Please input anything from keyboard then enter \" = \" when done: ");
-            while (true)
-            {            
-                string keyboardInput = GetKeyboardInput();
-                listKeyboardInput.Add(keyboardInput);
-                if (keyboardInput == "=")
-                {
-                    break;
-                }
-            }
-
+            List<string> listKeyboardInput = GetKeyboardInput();
             List<double> numbers = GetNumberOnly(listKeyboardInput);
 
             Console.WriteLine("Please choose output for extracted numbers from keyboard input:");
@@ -26,10 +16,10 @@ namespace IntroUI
             Console.WriteLine("2. Lowest Number");
             Console.WriteLine("3. Average Number");
             string choosedOutput = "";
-            double outputMethod = 0;  
+            double outputMethod = 0;
             while (true)
             {
-                string outputType = Console.ReadLine();                          
+                string outputType = Console.ReadLine();
                 if (outputType == "1")
                 {
                     choosedOutput = "highest number";
@@ -56,10 +46,19 @@ namespace IntroUI
             Console.WriteLine("===========================");
             Console.WriteLine("The " + choosedOutput + " is " + outputMethod);
         }
-        static string GetKeyboardInput()
+        static List<string> GetKeyboardInput()
         {
+            List<string> listKeyboardInput = new List<string>();
+            while (true)
+            {
             string keyInput = Console.ReadLine();
-            return keyInput;
+            listKeyboardInput.Add(keyInput);
+                if (keyInput == "=")
+                {
+                    break;
+                }
+            }
+            return listKeyboardInput;
         }
         static List<double> GetNumberOnly(List<string> listInput)
         {
@@ -104,7 +103,7 @@ namespace IntroUI
             int totalCount = listInput.Count;
             foreach (var item in listInput)
             {                
-                totalNumber += item;               
+                totalNumber += item;
             }
             double averageNumber = totalNumber/totalCount;
             return averageNumber;
