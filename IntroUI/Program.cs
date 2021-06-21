@@ -29,7 +29,7 @@ namespace IntroUI
             double outputMethod = 0;  
             while (true)
             {
-                string outputType = Convert.ToString(Console.ReadLine());                          
+                string outputType = Console.ReadLine();                          
                 if (outputType == "1")
                 {
                     choosedOutput = "highest number";
@@ -58,7 +58,7 @@ namespace IntroUI
         }
         static string GetKeyboardInput()
         {
-            string keyInput = Convert.ToString(Console.ReadLine());
+            string keyInput = Console.ReadLine();
             return keyInput;
         }
         static List<double> GetNumberOnly(List<string> listInput)
