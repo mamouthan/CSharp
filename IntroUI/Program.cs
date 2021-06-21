@@ -7,10 +7,9 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {   
-            Console.WriteLine("Please input anything from keyboard then enter \" = \" when done: ");
-            List<string> listKeyboardInput = GetKeyboardInput();
-            List<double> numbers = GetNumberOnly(listKeyboardInput);
-
+            Console.WriteLine("Please input numbers then enter \" = \" when done: ");
+            List<double> numbers = GetNumberInput();
+            
             Console.WriteLine("Please choose output for extracted numbers from keyboard input:");
             Console.WriteLine("1. Highest Number");
             Console.WriteLine("2. Lowest Number");
@@ -41,34 +40,30 @@ namespace IntroUI
                 else
                 {
                     Console.WriteLine(" You choosed wrong method, please choose again 1, 2 or 3");
-                }            
+                }
             }
             Console.WriteLine("===========================");
             Console.WriteLine("The " + choosedOutput + " is " + outputMethod);
         }
-        static List<string> GetKeyboardInput()
+        static List<double> GetNumberInput()
         {
-            List<string> listKeyboardInput = new List<string>();
+            List<double> numbers = new List<double>();
             while (true)
             {
-            string keyInput = Console.ReadLine();
-            listKeyboardInput.Add(keyInput);
-                if (keyInput == "=")
+                string keyboardInput = Console.ReadLine();
+                Boolean validNumber = double.TryParse(keyboardInput, out double compareNumber);
+                if(!validNumber && keyboardInput != "=")
+                {
+                    Console.WriteLine("Not a Number, please try again.");
+                    continue;
+                }
+                if (keyboardInput == "=")
                 {
                     break;
                 }
-            }
-            return listKeyboardInput;
-        }
-        static List<double> GetNumberOnly(List<string> listInput)
-        {
-            List<double> numbers= new List<double>();
-            foreach (var item in listInput)
-            {
-                Boolean validNumber = double.TryParse(item, out double compareNumber);
-                if(validNumber)
+                else
                 {
-                    numbers.Add(Convert.ToDouble(item));
+                    numbers.Add(Convert.ToDouble(keyboardInput));
                 }
             }
             return numbers;
@@ -77,11 +72,11 @@ namespace IntroUI
         {
             double highestNumber = listInput[0];
             foreach (var item in listInput)
-            {                
+            {
                 if (item > highestNumber)
                 {
                     highestNumber = item;
-                }                
+                }
             }
             return highestNumber;
         }
@@ -89,11 +84,11 @@ namespace IntroUI
         {
             double lowestNumber = listInput[0];
             foreach (var item in listInput)
-            {                
+            {
                 if (item < lowestNumber)
                 {
                     lowestNumber = item;
-                }                
+                }
             }
             return lowestNumber;
         }
@@ -102,7 +97,7 @@ namespace IntroUI
             double totalNumber = 0;
             int totalCount = listInput.Count;
             foreach (var item in listInput)
-            {                
+            {
                 totalNumber += item;
             }
             double averageNumber = totalNumber/totalCount;
