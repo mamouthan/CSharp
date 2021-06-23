@@ -3,11 +3,12 @@ using System.Collections.Generic;
 
 namespace IntroUI
 {
-    class userInput
+    class UserInput
     {
-        public static double[] GetKeyboardInput()
+        public double[] numbers;
+        public string choosedCalculation;
+        public double[] GetKeyboardInput()
         {
-
             Console.WriteLine("Please input numbers then enter \" = \" when done: ");
             List<double> listNumbers = new List<double>();
             while (true)
@@ -28,16 +29,15 @@ namespace IntroUI
                     listNumbers.Add(Convert.ToDouble(keyboardInput));
                 }
             }
-            double[] numbers = listNumbers.ToArray();
+            numbers = listNumbers.ToArray();
             return numbers;
         }
-        public static string GetSelectionCalculation()
+        public string GetSelectionCalculation()
         {
             Console.WriteLine("Please choose output for numbers input:");
             Console.WriteLine("1. Highest Number");
             Console.WriteLine("2. Lowest Number");
             Console.WriteLine("3. Average Number");
-            string choosedCalculation;
             while (true)
             {
                 string outputType = Console.ReadLine();
