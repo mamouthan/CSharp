@@ -7,7 +7,7 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {
-            userInput userInput = new userInput();
+            UserInput userInput = new UserInput();
             double[] numbers = userInput.GetKeyboardInput();
             string choosedOutput = userInput.GetSelectionCalculation();
             Dictionary<string, Func<double[], double>> calculationDictionary = new Dictionary<string, Func<double[], double>>
