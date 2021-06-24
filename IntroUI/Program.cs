@@ -12,14 +12,13 @@ namespace IntroUI
             UserInputHelper getUserInputHelper = new UserInputHelper();
             getUserInputHelper.GetInputKeyboard();
             getUserInputHelper.GetSelectionCalculation();
-            UserInput getUserInput = new UserInput();
             Dictionary<string, Func<double[], double>> calculationDictionary = new Dictionary<string, Func<double[], double>>
             {
                 {"1", FindHighestNumber},
                 {"2", FindLowestNumber},
                 {"3", FindAverageNumber}
             };
-            double resultCalculation = calculationDictionary[getUserInput.ChoosedCalculation](getUserInput.Numbers);
+            double resultCalculation = calculationDictionary[UserInput.choosedCalculation](UserInput.numbers);
             Console.WriteLine("The result is {0}", resultCalculation);
         }
         static double FindHighestNumber(double[] listInput)
