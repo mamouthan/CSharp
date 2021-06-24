@@ -8,15 +8,13 @@ namespace IntroUI
         static void Main(string[] args)
         {
             UserInput userInput = new UserInput();
-            double[] numbers = userInput.GetKeyboardInput();
-            string choosedOutput = userInput.GetSelectionCalculation();
             Dictionary<string, Func<double[], double>> calculationDictionary = new Dictionary<string, Func<double[], double>>
             {
                 {"1", FindHighestNumber},
                 {"2", FindLowestNumber},
                 {"3", FindAverageNumber}
             };
-            double resultCalculation = calculationDictionary[choosedOutput](numbers);
+            double resultCalculation = calculationDictionary[userInput.ChoosedCalculation](userInput.Numbers);
             Console.WriteLine("The result is {0}", resultCalculation);
         }
         static double FindHighestNumber(double[] listInput)
