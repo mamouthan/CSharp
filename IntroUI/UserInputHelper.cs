@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace numbers
+namespace IntroUI
 {
-    public class UserInputHelper
+    class UserInputHelper
     {
         UserInput userInput = new UserInput();
         public void GetInputKeyboard()
