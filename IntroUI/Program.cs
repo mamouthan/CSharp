@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace IntroUI
@@ -7,11 +7,8 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {
-            static void Main(string[] args)
-        {
-            UserInputHelper getUserInputHelper = new UserInputHelper();
-            getUserInputHelper.GetInputKeyboard();
-            getUserInputHelper.GetSelectionCalculation();
+            UserInputHelper.GetInputKeyboard();
+            UserInputHelper.GetSelectionCalculation();
             Dictionary<string, Func<double[], double>> calculationDictionary = new Dictionary<string, Func<double[], double>>
             {
                 {"1", FindHighestNumber},

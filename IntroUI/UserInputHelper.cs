@@ -8,7 +8,7 @@ namespace IntroUI
 {
     class UserInputHelper
     {
-        public void GetInputKeyboard()
+        public static void GetInputKeyboard()
         {
             Console.WriteLine("Please input numbers then enter \" = \" when done: ");
             List<double> listNumbers = new List<double>();
@@ -32,7 +32,7 @@ namespace IntroUI
             }
             UserInput.numbers = listNumbers.ToArray();
         }
-        public void GetSelectionCalculation()
+        public static void GetSelectionCalculation()
         {
             Console.WriteLine("Please choose output for numbers input:");
             Console.WriteLine("1. Highest Number");
