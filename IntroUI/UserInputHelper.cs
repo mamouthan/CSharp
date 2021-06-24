@@ -8,7 +8,8 @@ namespace IntroUI
 {
     class UserInputHelper
     {
-        public static void GetInputKeyboard()
+        UserInput getUserInput = new UserInput();
+        public double[] GetInputKeyboard()
         {
             Console.WriteLine("Please input numbers then enter \" = \" when done: ");
             List<double> listNumbers = new List<double>();
@@ -30,9 +31,10 @@ namespace IntroUI
                     listNumbers.Add(Convert.ToDouble(keyboardInput));
                 }
             }
-            UserInput.numbers = listNumbers.ToArray();
+            getUserInput.Numbers = listNumbers.ToArray();
+            return getUserInput.Numbers;
         }
-        public static void GetSelectionCalculation()
+        public string GetSelectionCalculation()
         {
             Console.WriteLine("Please choose output for numbers input:");
             Console.WriteLine("1. Highest Number");
@@ -43,7 +45,7 @@ namespace IntroUI
                 string keyboardInput = Console.ReadLine();
                 if (keyboardInput == "1" || keyboardInput == "2" || keyboardInput == "3")
                 {
-                    UserInput.choosedCalculation = keyboardInput;
+                    getUserInput.ChoosedCalculation = keyboardInput;
                     break;
                 }
                 else
@@ -51,6 +53,7 @@ namespace IntroUI
                     Console.WriteLine(" You choosed wrong method, please choose again 1, 2 or 3");
                 }
             }
+            return getUserInput.ChoosedCalculation;
         }
     }
 }
