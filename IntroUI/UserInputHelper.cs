@@ -8,7 +8,6 @@ namespace IntroUI
 {
     class UserInputHelper
     {
-        UserInput userInput = new UserInput();
         public void GetInputKeyboard()
         {
             Console.WriteLine("Please input numbers then enter \" = \" when done: ");
@@ -31,7 +30,7 @@ namespace IntroUI
                     listNumbers.Add(Convert.ToDouble(keyboardInput));
                 }
             }
-            userInput.Numbers = listNumbers.ToArray();
+            UserInput.numbers = listNumbers.ToArray();
         }
         public void GetSelectionCalculation()
         {
@@ -44,7 +43,7 @@ namespace IntroUI
                 string keyboardInput = Console.ReadLine();
                 if (keyboardInput == "1" || keyboardInput == "2" || keyboardInput == "3")
                 {
-                    userInput.ChoosedCalculation = keyboardInput;
+                    UserInput.choosedCalculation = keyboardInput;
                     break;
                 }
                 else
