@@ -5,7 +5,29 @@ namespace IntroUI
 {
     class UserInput
     {
-        public static double[] numbers;
-        public static string choosedCalculation;
+       private double[] numbers;
+       private string choosedCalculation;
+       public double[] Numbers
+       {
+           get
+           {
+               return numbers;
+           }
+           set
+           {
+               numbers = value;
+           }
+       }
+       public string ChoosedCalculation
+       {
+           get
+           {
+               return choosedCalculation;
+           }
+           set
+           {
+               choosedCalculation = value;
+           }
+       }
     }
 }
