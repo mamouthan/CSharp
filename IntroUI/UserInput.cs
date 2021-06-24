@@ -5,17 +5,45 @@ namespace IntroUI
 {
     class UserInput
     {
-        public double[] numbers;
-        public string choosedCalculation;
-        public double[] GetKeyboardInput()
+        private double[] numbers;
+        private string choosedCalculation;
+        private bool validNumber;
+        public UserInput()
+        {
+            GetInputKeyboard();
+            GetSelectionCalculation();
+        }
+        public double[] Numbers
+        {
+            get
+            {
+                return this.numbers;
+            }
+            set
+            {
+                this.numbers = value; 
+            }
+        }
+        public string ChoosedCalculation
+        {
+            get
+            {
+                return this.choosedCalculation;
+            }
+            set
+            {
+                this.choosedCalculation = value;
+            }
+        }
+        private void GetInputKeyboard()
         {
             Console.WriteLine("Please input numbers then enter \" = \" when done: ");
             List<double> listNumbers = new List<double>();
             while (true)
             {
                 string keyboardInput = Console.ReadLine();
-                Boolean validNumber = double.TryParse(keyboardInput, out double compareNumber);
-                if (!validNumber && keyboardInput != "=")
+                this.validNumber = double.TryParse(keyboardInput, out double compareNumber);
+                if (!this.validNumber && keyboardInput != "=")
                 {
                     Console.WriteLine("Not a Number, please try again.");
                     continue;
@@ -29,10 +57,9 @@ namespace IntroUI
                     listNumbers.Add(Convert.ToDouble(keyboardInput));
                 }
             }
-            numbers = listNumbers.ToArray();
-            return numbers;
+            Numbers = listNumbers.ToArray();
         }
-        public string GetSelectionCalculation()
+        private void GetSelectionCalculation()
         {
             Console.WriteLine("Please choose output for numbers input:");
             Console.WriteLine("1. Highest Number");
@@ -40,10 +67,10 @@ namespace IntroUI
             Console.WriteLine("3. Average Number");
             while (true)
             {
-                string outputType = Console.ReadLine();
-                if (outputType == "1" || outputType == "2" || outputType == "3")
+                string keyboardInput = Console.ReadLine();
+                if (keyboardInput == "1" || keyboardInput == "2" || keyboardInput == "3")
                 {
-                    choosedCalculation = outputType;
+                    ChoosedCalculation = keyboardInput;
                     break;
                 }
                 else
@@ -51,7 +78,6 @@ namespace IntroUI
                     Console.WriteLine(" You choosed wrong method, please choose again 1, 2 or 3");
                 }
             }
-            return choosedCalculation;
         }
     }
 }
