@@ -9,8 +9,8 @@ namespace IntroUI
         {
             UserInput getUserInput = new UserInput();
             UserInputHelper getUserInputHelper = new UserInputHelper();
-            getUserInputHelper.GetInputKeyboard(out getUserInput.numbers);
-            getUserInputHelper.GetSelectionCalculation(out getUserInput.choosedCalculation);
+            getUserInput.numbers = getUserInputHelper.GetInputKeyboard();
+            getUserInput.choosedCalculation = getUserInputHelper.GetSelectionCalculation();
             Dictionary<string, Func<double[], double>> calculationDictionary = new Dictionary<string, Func<double[], double>>
             {
                 {"1", FindHighestNumber},
