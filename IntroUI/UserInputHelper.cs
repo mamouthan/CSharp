@@ -8,9 +8,9 @@ namespace IntroUI
 {
     class UserInputHelper
     {
-        public UserInput getUserInput = new UserInput();
         public UserInput GetInputKeyboard()
         {
+            UserInput getUserInput = new UserInput();
             Console.WriteLine("Please input numbers then enter \" = \" when done: ");
             List<double> listNumbers = new List<double>();
             while (true)
