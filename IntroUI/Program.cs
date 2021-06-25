@@ -7,16 +7,17 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {
+            UserInput getUserInput = new UserInput();
             UserInputHelper getUserInputHelper = new UserInputHelper();
-            double[] numbers = getUserInputHelper.GetInputKeyboard();
-            string choosedCalculation = getUserInputHelper.GetSelectionCalculation();
+            getUserInputHelper.GetInputKeyboard(out getUserInput.numbers);
+            getUserInputHelper.GetSelectionCalculation(out getUserInput.choosedCalculation);
             Dictionary<string, Func<double[], double>> calculationDictionary = new Dictionary<string, Func<double[], double>>
             {
                 {"1", FindHighestNumber},
                 {"2", FindLowestNumber},
                 {"3", FindAverageNumber}
-            };            
-            double resultCalculation = calculationDictionary[choosedCalculation](numbers);
+            };
+            double resultCalculation = calculationDictionary[getUserInput.choosedCalculation](getUserInput.numbers);
             Console.WriteLine("The result is {0}", resultCalculation);
         }
         static double FindHighestNumber(double[] listInput)
