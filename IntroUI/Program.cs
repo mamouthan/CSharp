@@ -9,14 +9,14 @@ namespace IntroUI
         {
             UserInputHelper getDataInput = new UserInputHelper();
             UserInput dataInput = getDataInput.GetInputKeyboard();
-            Dictionary<string, Func<double[], double>> calculationDictionary = new Dictionary<string, Func<double[], double>>
+            Dictionary<string, ICalculation> calculationDictionary = new Dictionary<string, ICalculation>
             {
-                {"1", FindHighestNumber},
-                {"2", FindLowestNumber},
-                {"3", FindAverageNumber}
+                {"1", new HighestNumber(dataInput.numbers)},
+                {"2", new LowestNumber(dataInput.numbers)},
+                {"3", new AverageNumber(dataInput.numbers)}
             };
-            double resultCalculation = calculationDictionary[dataInput.choosedCalculation](dataInput.numbers);
-            Console.WriteLine("The result is {0}", resultCalculation);
+            ICalculation calculation = calculationDictionary[dataInput.choosedCalculation];
+            calculation.Calculate();
         }
         static double FindHighestNumber(double[] listInput)
         {
