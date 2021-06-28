@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace IntroUI
@@ -17,41 +17,6 @@ namespace IntroUI
             };
             ICalculation calculation = calculationDictionary[dataInput.choosedCalculation];
             calculation.Calculate();
-        }
-        static double FindHighestNumber(double[] listInput)
-        {
-            double highestNumber = listInput[0];
-            foreach (var item in listInput)
-            {
-                if (item > highestNumber)
-                {
-                    highestNumber = item;
-                }
-            }
-            return highestNumber;
-        }
-        static double FindLowestNumber(double[] listInput)
-        {
-            double lowestNumber = listInput[0];
-            foreach (var item in listInput)
-            {
-                if (item < lowestNumber)
-                {
-                    lowestNumber = item;
-                }
-            }
-            return lowestNumber;
-        }
-        static double FindAverageNumber(double[] listInput)
-        {
-            double totalNumber = 0;
-            int totalCount = listInput.Length;
-            foreach (var item in listInput)
-            {
-                totalNumber += item;
-            }
-            double averageNumber = totalNumber / totalCount;
-            return averageNumber;
-        }
+        }        
     }
 }
