@@ -8,6 +8,6 @@ namespace IntroUI
 {
     interface ICalculator
     {
-        void Calculate(in double[] listNumbers, out double resultCalculation);
+        double Calculate(double[] numbers);
     }
 }
