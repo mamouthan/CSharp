@@ -15,7 +15,7 @@ namespace IntroUI
                 {"2", new LowestNumber()},
                 {"3", new AverageNumber()}
             };
-            ICalculator iCalculator = calculationDictionary[userInput.choosedCalculation];
+            ICalculator calculator = calculationDictionary[userInput.choosedCalculation];
             Console.WriteLine("The result is {0}", iCalculator.Calculate(userInput.numbers));
         }
     }
