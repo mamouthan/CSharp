@@ -6,27 +6,19 @@ using System.Threading.Tasks;
 
 namespace IntroUI
 {
-    class HighestNumber : ICalculation
+    class HighestNumber : ICalculator
     {
-        public double ResultCalculation { get; set; }
-        public double[] ListNumbers { get; set; }
-
-        public HighestNumber(double[] numbers)
+        public void Calculate(in double[] listNumbers, out double resultCalculation)
         {
-            ListNumbers = numbers;
-        }
-        public void Calculate()
-        {
-            double highestNumber = ListNumbers[0];
-            foreach (var item in ListNumbers)
+            double highestNumber = listNumbers[0];
+            foreach (var item in listNumbers)
             {
                 if (item > highestNumber)
                 {
                     highestNumber = item;
                 }
             }
-            ResultCalculation = highestNumber;
-            Console.WriteLine("The result is {0}", ResultCalculation);
+            resultCalculation = highestNumber;
         }
     }
 }
