@@ -6,27 +6,19 @@ using System.Threading.Tasks;
 
 namespace IntroUI
 {
-    class LowestNumber : ICalculation
+    class LowestNumber : ICalculator
     {
-        public double ResultCalculation { get; set; }
-        public double[] ListNumbers { get; set; }
-
-        public LowestNumber(double[] numbers)
+        public void Calculate(in double[] listNumbers, out double resultCalculation)
         {
-            ListNumbers = numbers;
-        }
-        public void Calculate()
-        {
-            double lowestNumber = ListNumbers[0];
-            foreach (var item in ListNumbers)
+            double lowestNumber = listNumbers[0];
+            foreach (var item in listNumbers)
             {
                 if (item < lowestNumber)
                 {
                     lowestNumber = item;
                 }
             }
-            ResultCalculation = lowestNumber;
-            Console.WriteLine("The result is {0}", ResultCalculation);
+            resultCalculation = lowestNumber;
         }
     }
 }

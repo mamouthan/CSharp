@@ -6,25 +6,17 @@ using System.Threading.Tasks;
 
 namespace IntroUI
 {
-    class AverageNumber : ICalculation
+    class AverageNumber : ICalculator
     {
-        public double ResultCalculation { get; set; }
-        public double[] ListNumbers { get; set; }
-
-        public AverageNumber(double[] numbers)
-        {
-            ListNumbers = numbers;
-        }
-        public void Calculate()
+        public void Calculate(in double[] listNumbers, out double resultCalculation)
         {
             double totalNumber = 0;
-            int totalCount = ListNumbers.Length;
-            foreach (var item in ListNumbers)
+            int totalCount = listNumbers.Length;
+            foreach (var item in listNumbers)
             {
                 totalNumber += item;
             }
-            ResultCalculation = totalNumber / totalCount;
-            Console.WriteLine("The result is {0}", ResultCalculation);
+            resultCalculation = totalNumber / totalCount;
         }
     }
 }

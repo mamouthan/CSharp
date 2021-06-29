@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace IntroUI
@@ -9,14 +9,15 @@ namespace IntroUI
         {
             UserInputHelper getDataInput = new UserInputHelper();
             UserInput dataInput = getDataInput.GetInputKeyboard();
-            Dictionary<string, ICalculation> calculationDictionary = new Dictionary<string, ICalculation>
+            Dictionary<string, ICalculator> calculationDictionary = new Dictionary<string, ICalculator>
             {
-                {"1", new HighestNumber(dataInput.numbers)},
-                {"2", new LowestNumber(dataInput.numbers)},
-                {"3", new AverageNumber(dataInput.numbers)}
+                {"1", new HighestNumber()},
+                {"2", new LowestNumber()},
+                {"3", new AverageNumber()}
             };
-            ICalculation calculation = calculationDictionary[dataInput.choosedCalculation];
-            calculation.Calculate();
-        }        
+            ICalculator calculation = calculationDictionary[dataInput.choosedCalculation];
+            calculation.Calculate(in dataInput.numbers, out double ResultCalculation);
+            Console.WriteLine("The result is {0}", ResultCalculation);
+        }
     }
 }
