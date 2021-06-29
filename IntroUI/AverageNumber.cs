@@ -8,15 +8,15 @@ namespace IntroUI
 {
     class AverageNumber : ICalculator
     {
-        public void Calculate(in double[] listNumbers, out double resultCalculation)
+        public double Calculate(double[] numbers)
         {
             double totalNumber = 0;
-            int totalCount = listNumbers.Length;
-            foreach (var item in listNumbers)
+            int totalCount = numbers.Length;
+            foreach (var item in numbers)
             {
                 totalNumber += item;
             }
-            resultCalculation = totalNumber / totalCount;
+            return totalNumber / totalCount;
         }
     }
 }

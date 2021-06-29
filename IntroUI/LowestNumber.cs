@@ -8,17 +8,17 @@ namespace IntroUI
 {
     class LowestNumber : ICalculator
     {
-        public void Calculate(in double[] listNumbers, out double resultCalculation)
+        public double Calculate(double[] numbers)
         {
-            double lowestNumber = listNumbers[0];
-            foreach (var item in listNumbers)
+            double lowestNumber = numbers[0];
+            foreach (var item in numbers)
             {
                 if (item < lowestNumber)
                 {
                     lowestNumber = item;
                 }
             }
-            resultCalculation = lowestNumber;
+            return lowestNumber;
         }
     }
 }
